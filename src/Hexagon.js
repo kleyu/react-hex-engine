@@ -1,9 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useMutationEffect,
-  useState
-} from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Hex from "./models/Hex";
@@ -52,7 +47,7 @@ const Hexagon = props => {
 
   useEffect(() => setHex(() => new Hex(q, r)), [q, r]);
 
-  useMutationEffect(() => setPixel(() => HexUtils.hexToPixel(hex, layout)), [
+  useLayoutEffect(() => setPixel(() => HexUtils.hexToPixel(hex, layout)), [
     hex,
     points
   ]);
